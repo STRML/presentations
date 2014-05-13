@@ -1,10 +1,11 @@
 {
-    "name": "slideremote",
-    "description": "Remote control for slides.",
-    "version": "0.0.1",
-    "private": true,
-    "dependencies": {
-        "express": "3.x",
-        "socket.io": "0.9.x"
-    }
+  "name": "slideremote",
+  "description": "Remote control for slides.",
+  "version": "0.0.1",
+  "private": true,
+  "dependencies": {
+    "express": "3.x",
+    "sockjs": "^0.3.8",
+    "chuckt": "^0.1.3"
+  }
 }

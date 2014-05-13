@@ -2,57 +2,77 @@
 var express = require('express');
 var app = express();
 var server = require('http').createServer(app);
-var io = require('socket.io').listen(server);
+var websockets = require('sockjs').createServer();
 
-// other things
-var path = require('path');
+// Conf
+var port = 8008;
 
 // our sockets
-var conn = {};
+var conns = {};
 
 // let us get stuff please?
-app.use(express.static(path.join(__dirname, 'www')));
+app.use(express.static('./www'));
 
 // start listening
-server.listen(8008);
+server.listen(port);
+websockets.installHandlers(server, {prefix: '/socket'});
+
+console.log("Server listening on port", port);
 
 // connection
-io.sockets.on('connection', function(socket) {
-    socket.emit('identify');
-    socket.on('identity', function(data) {
-        var uid = data['uid'];
+websockets.on('connection', function(socket) {
 
-        if (conn[uid] == undefined)
-            conn[uid] = {};
+  socket.on('data', function(data){
+    try {
+      console.log('data', data);
+      data = JSON.parse(data);
+      switch(data.type) {
+        case 'identity':
+          identity(data.data);
+          break;
+      }
+    } catch(e) {
+      console.error("Error parsing", data, e);
+    }
 
-        if (data['type'] == 'viewer') {
-            conn[uid]['viewer'] = socket;
+  });
+
+  write(socket, {type: 'identify'});
+
+  function identity(data) {
+    var uid = data.uid;
+    if (!conns[uid]) conns[uid] = {};
+    var conn = conns[uid];
+
+    if (data.type === 'viewer') {
+      conn.viewer = socket;
+    }
+
+    if (data.type === 'remote') {
+      conn.remote = socket;
+
+      // register remote disconnect
+      socket.once('disconnect', function() {
+        if (conn.viewer !== undefined){
+          write(conn.viewer, {type: 'disconnected'});
         }
+      });
+    }
 
-        if (data['type'] == 'remote') {
-            conn[uid]['remote'] = socket;
+    if (conn !== undefined) {
+      if (conn.viewer !== undefined && conn.remote !== undefined) {
+        var viewer = conn.viewer;
+        var remote = conn.remote;
 
-            // register remote disconnect
-            socket.on('disconnect', function() {
-                if (conn[uid]['viewer'] != undefined)
-                    conn[uid]['viewer'].emit('disconnected');
-            });
-        }
+        // Proxy messages from remote to viewer
+        remote.on('data', function(data){
+          viewer.write(data);
+        });
+      }
+    }
+  }
 
-        if (conn[uid] != undefined) {
-            if (conn[uid]['viewer'] != undefined && conn[uid]['remote'] != undefined) {
-
-                var viewer = conn[uid]['viewer'];
-                var remote = conn[uid]['remote'];
-
-                viewer.emit('ready');
-                remote.emit('ready');
-
-                remote.on('msg', function(data){
-                    viewer.emit('msg', data);
-                });
-
-            }
-        }
-    });
+  function write(socket, data) {
+    socket.write(JSON.stringify(data));
+  }
 });

@@ -1,75 +1,91 @@
 <!doctype html>
 <html>
-    <head>
-        <title>Remote</title>
-        <style>
-            button {
-                font-size: 20px;
+  <head>
+    <title>Remote</title>
+    <style>
+      button {
+        font-size: 20px;
 
-                padding-top: 30px;
-                padding-bottom: 30px;
-            }
+        padding-top: 30px;
+        padding-bottom: 30px;
+      }
 
-            .full {
-                width: 100%;
-                height: 300px;
-                background-color: #B8FFB0;
-            }
+      .full {
+        width: 100%;
+        height: 300px;
+        background-color: #B8FFB0;
+      }
 
-            .half {
-                float: left;
-                width: 50%;
-                background-color: #FFE0A1;
-            }
+      .half {
+        float: left;
+        width: 50%;
+        background-color: #FFE0A1;
+      }
 
-            .quarter {
-                float: left;
-                width: 25%;
-                background-color: #DAC2FF;
-            }
-        </style>
-    </head>
+      .quarter {
+        float: left;
+        width: 25%;
+        background-color: #DAC2FF;
+      }
+    </style>
+  </head>
 
-    <body>
-        <button class="full" data-emit="next">Next</button>
-        <button class="full" data-emit="prev">Previous</button>
+  <body>
+    <button class="full" data-emit="next">Next</button>
+    <button class="full" data-emit="prev">Previous</button>
 
-        <button class="quarter" data-emit="up">Up</button>
-        <button class="quarter" data-emit="down">Down</button>
-        <button class="quarter" data-emit="left">Left</button>
-        <button class="quarter" data-emit="right">Right</button>
+    <button class="quarter" data-emit="up">Up</button>
+    <button class="quarter" data-emit="down">Down</button>
+    <button class="quarter" data-emit="left">Left</button>
+    <button class="quarter" data-emit="right">Right</button>
 
-        <button class="full" data-emit="overview">Overview</button>
-        <button class="full" data-emit="zoom">Zoom</button>
-        <button class="quarter" data-emit="zoomup">Up</button>
-        <button class="quarter" data-emit="zoomdown">Down</button>
-        <button class="quarter" data-emit="zoomleft">Left</button>
-        <button class="quarter" data-emit="zoomright">Right</button>
+    <button class="full" data-emit="overview">Overview</button>
+    <button class="full" data-emit="zoom">Zoom</button>
+    <button class="quarter" data-emit="zoomup">Up</button>
+    <button class="quarter" data-emit="zoomdown">Down</button>
+    <button class="quarter" data-emit="zoomleft">Left</button>
+    <button class="quarter" data-emit="zoomright">Right</button>
 
 
-        <script src="js/socket.io.min.js"></script>
+    <script src="js/sockjs.js"></script>
 
-        <script>
-            var remoteServer = "http://securesha.re:8008"
+    <script>
+      /*global SockJS */
+      var remoteServer = window.location.protocol + '//' + window.location.host;
 
-            var uid = window.location.hash.substring(1);
-            var socket = io.connect(remoteServer);
+      var uid = window.location.hash.substring(1);
+      connect();
 
-            socket.on('connect', function () {
-                // we're connected to the server
-                socket.emit('identity', {
-                    type: 'remote',
-                    uid: uid
-                });
-            });
+      function connect() {
+        // connect to server
+        var url = remoteServer + '/socket';
+        var sock = new SockJS(url);
 
-            socket.on('ready', function () {
-                // alert that we are ready
-            });
+        // connected and ready
+        sock.onopen = function() {
+          // we're connected to the server
+          console.log("connected.");
+          sock.emit('identity', {
+            type: 'remote',
+            uid: uid
+          });
+        };
 
-            document.addEventListener('click', function(e) {
-                socket.emit("msg", {msg: e.target.getAttribute('data-emit')});
-            });
-        </script>
-    </body>
+        sock.onclose = function() {
+          // lost the remote
+          console.error('lost connection.');
+          setTimeout(connect, 500);
+        };
+
+        sock.emit = function(type, data) {
+          console.log("sending", type, data);
+          sock.send(JSON.stringify({type: type, data: data}));
+        };
+
+        document.addEventListener('click', function(e) {
+          sock.emit("msg", e.target.getAttribute('data-emit'));
+        });
+      }
+    </script>
+  </body>
 </html>
