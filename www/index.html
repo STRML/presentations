@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+
+    <title>Web Workers, Encryption, Polymer, and the File API</title>
+
+    <link rel="stylesheet" href="css/reveal.min.css">
+    <link rel="stylesheet" href="css/theme/night.css" id="theme">
+    <style>
+      .reveal pre {
+        max-width: 95%;
+        display: table;
+        width: auto;
+      }
+      .reveal pre code{
+        max-height: 600px;
+      }
+    </style>
+
+    <!-- For syntax highlighting -->
+    <link rel="stylesheet" href="css/zenburn.css">
+  </head>
+
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <section>
+          <div id="qr"></div>
+          <h3>Scan QR code</h3>
+        </section>
+
+        <section class="socketConnection">
+          <h2>Connected to external mobile device.</h2>
+          <img src="img/jackie.jpg" style="opacity: 0" />
+        </section>
+
+        <section data-markdown="slides.md" data-separator="^---" data-vertical="^-vert-"></section>
+      </div>
+    </div>
+
+    <script src="js/head.min.js"></script>
+    <script src="js/reveal.min.js"></script>
+    <script src="js/socket.io.min.js"></script>
+    <script src="js/qrcode.js"></script>
+
+    <script src="js/initSlides.js"></script>
+  </body>
+</html>
