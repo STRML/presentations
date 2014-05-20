@@ -94,6 +94,12 @@ process.stdin.pipe(tr).pipe(process.stdout);
   
 ---
 
+### Handling Pressure
+
+TODO: Explain backpressure
+
+---
+
 ### EVEN MORE
 
 TODO: Streaming server mesh
