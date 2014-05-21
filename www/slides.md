@@ -9,7 +9,7 @@
 > no single program or idea makes it work well. Instead, what makes it effective is the
 > approach to programming, a philosophy of using the computer. 
 
-> Although that philosophy can't be written down in a single sentence, at its heart is the idea that the power of
+> Although that philosophy cannot be written down in a single sentence, at its heart is the idea that the power of
 > a system comes more from the relationships among programs than from the programs themselves.
 
 > Many UNIX programs do quite trivial things in isolation, but, combined with other programs, 
@@ -63,51 +63,6 @@ $ gzip -c aFile | ssh user@host 'cat | gunzip > file.txt'
 
 ---
 
-### Simple Example
-
-`simpleThrough.js`
-```javascript
-var through = require('through');
-
-var tr = through(function write(data) {
-  var str = data.toString().slice(0, -1); // Remove trailing \n
-  this.queue('> ' + str + ':' + str.length + '\n');
-});
-
-process.stdin.pipe(tr).pipe(process.stdout);
-```
+### Examples
 
 ---
-
-### Another Example, From Securesha.re
-  * Send file to S3, while zipping it, while receiving from client 
-  * Minimal buffering on webserver
-  * Automatic backpressure handling
-
-```javascript
-  // simplified...
-  app.post('/putfile', function(req, res){
-    var s3Req = s3Client.put('/fileName');
-    req.pipe(zlib.createGzip()).pipe(s3Req);
-  });
-```
-  
----
-
-### Handling Pressure
-
-TODO: Explain backpressure
-
----
-
-### EVEN MORE
-
-TODO: Streaming server mesh
-```javascript
-fs.createReadStream()
-```
-
----
-
-
-
