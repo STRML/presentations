@@ -8,7 +8,6 @@ sockStream.pipe(model.createStream()).pipe(sockStream);
 
 var setPerspective = window.setPerspective;
 window.setPerspective = function(x, y) {
-  console.log('setting position', arguments);
   model.set('position', {x: x, y: y});
   setPerspective.apply(this, arguments);
 };
