@@ -4,6 +4,8 @@ var zlib = require('zlib');
 var port = process.argv[2];
 
 http.createServer(function(req, res){
+  // Pipe the request into a file and gzip it. We can see it
+  // with gzcat
   var writeStream = fs.createWriteStream('./file.bin');
   var zlibStream = zlib.createGzip();
   req.pipe(zlibStream).pipe(writeStream);

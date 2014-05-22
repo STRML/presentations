@@ -3,6 +3,7 @@ var fs = require('fs');
 var port = process.argv[2];
 
 http.createServer(function(req, res){
+  // Pipe the http request into a local file, we can see it in the file system
   var writeStream = fs.createWriteStream('./file.bin');
   req.pipe(writeStream);
 
