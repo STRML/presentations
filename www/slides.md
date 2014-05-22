@@ -3,6 +3,14 @@
 
 ---
 
+## Why you should use Node.JS
+
+---
+
+## Things that Sam likes
+
+---
+
 ### `1984`, `The Unix Programming Environment`
 
 > Even though the UNIX system introduces a number of innovative programs and techniques,
@@ -22,11 +30,6 @@
 ```
 # Searching a web page
 $ curl -s http://prog21.dadgum.com/ | grep 'Nintendo'
-
-<p class="about">I'm a <a href="56.html">recovering programmer</a> who has been designing video games 
-since the 1980s, doing things that seem baroquely hardcore in retrospect, 
-like writing Super Nintendo games entirely in assembly language. 
-These days I use whatever tools are the most fun and give me the biggest advantage.</p>
 
 
 # Ghetto compressed scp
@@ -55,6 +58,8 @@ $ gzip -c aFile | ssh user@host 'cat | gunzip > file.txt'
 
 * Do one thing, and do it well
 
+![layin pipes](/img/layingpipe.png)
+
 ---
 
 ### Check out the pipes on this guy
@@ -66,3 +71,64 @@ $ gzip -c aFile | ssh user@host 'cat | gunzip > file.txt'
 ### Examples
 
 ---
+
+### A simple `through` stream
+
+---
+
+### Duplex streams
+
+> a.pipe(b).pipe(a)
+
+![Duplex](/img/duplexer.png)
+
+---
+
+### Simple stream transforms
+
+---
+
+### Processing large files
+
+---
+
+### Dnode
+
+![Dnode](/img/dnode.png)
+
+---
+
+### Turtles all the way down
+
+![OH SHIT TURTLES](/img/dnode2.png)
+
+---
+
+### HTML Streams
+
+Realtime data, direct to your page, server & client rendered
+
+Create a data.txt that streams directly to the browser,
+but is rendered properly as static html from the server.
+
+---
+
+### Scuttlebutt
+
+![scuttlebutt](/img/scuttlebutt.png)
+
+^
+
+---
+
+### Gossip Protocol
+
+![gossip](/img/gossip_protocol.png)
+
+---
+
+### Shared state among multiple webservers
+
+---
+
+## The End

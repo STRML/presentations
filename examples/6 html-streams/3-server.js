@@ -16,6 +16,8 @@ var server = http.createServer(function (req, res) {
 
   // If we hit the root, bootstrap index.html with our dynamic data
   if (req.url === '/') {
+    // Hyperstream is a library that creates a stream
+    // by streaming html from a stream into an html template
     var hs = hyperstream({
       '#rows': sf.slice(-5).pipe(render())
     });
@@ -27,3 +29,10 @@ var server = http.createServer(function (req, res) {
 });
 server.listen(8000);
 
+// Stream updates to data.txt to the client.
+var shoe = require('shoe');
+var sock = shoe(function (stream) {
+  // sf.follow will pipe every new line out of the stream.
+  sf.follow(-1,0).pipe(stream);
+});
+sock.install(server, '/sock');

@@ -9,6 +9,9 @@ module.exports = function () {
     try { row = JSON.parse(line); }
     catch (err) { return this.emit('error', err); }
 
+    // Hyperglue is a library that creates simply inserts 
+    // data into a string at given selectors. Similar to a templating 
+    // language, but uses regular HTML strings.
     this.queue(hyperglue(html.toString(), {
       '.who': row.who,
       '.message': row.message

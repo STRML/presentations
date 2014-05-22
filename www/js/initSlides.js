@@ -14,7 +14,7 @@ var createQrCode = function(text) {
 };
 
 // make qr code
-document.getElementById('qr').innerHTML = createQrCode(remoteServer + '/remote.html#'+uid);
+// document.getElementById('qr').innerHTML = createQrCode(remoteServer + '/remote.html#'+uid);
 
 // connected?
 var connected = false;
@@ -63,7 +63,8 @@ function fixZoomJank(){
 //
 
 // Connect to websocket
-connect();
+// Disabled for now.
+// connect();
 
 function connect() {
   // connect to server
@@ -73,7 +74,6 @@ function connect() {
   // connected and ready
   sock.onopen = function() {
     if (!connected) {
-      Reveal.right();
       connected = true;
       setTimeout(function() {
         document.querySelector(".socketConnection img").style.opacity = 1;
@@ -129,6 +129,7 @@ function connect() {
 
   // identify with server
   function handleIdentify() {
+    Reveal.right();
     sock.emit('identity', {
       type: 'viewer',
       uid: uid
