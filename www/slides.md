@@ -170,8 +170,11 @@ Examples
 
 ## 7. Flux / Redux
 
+(`counter` example)
+
 - All state of all components lives in a single JSON object.
 - Views can trigger actions that create a new root state.
+- <a href="http://localhost:3000" target="_blank">Start</a>
 
 ---
 
@@ -179,6 +182,7 @@ Examples
 
 - Just like React components, Redux actions are pure functions.
 - Pure functions can be reversed and re-applied at will.
+- <a href="http://localhost:3000" target="_blank">Start</a>
 
 ---
 
@@ -186,6 +190,8 @@ Examples
 
 - The server prerenders the entire application and serves it to the client.
 - React resumes where the server left off without modifying the DOM.
+- Fetch data from some external API, render the app and serve the data.
+- `npm start; npm run client;` <a href="http://localhost:8080/?counter=42" target="_blank">Start</a>
 
 ---
 
