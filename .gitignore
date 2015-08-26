@@ -1,3 +1,5 @@
 node_modules
 *.swp
 *.zip
+*-bundle.js
+*.js.map

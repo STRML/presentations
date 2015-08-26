@@ -135,10 +135,12 @@ Examples
 
 ---
 
-## 4. Hot reloading
+## 4. Hot reloading & DevTools
 
 - React components are pure functions, so they can be replaced at will without a refresh.
 - Use Webpack
+- <a href="http://localhost:8080/0-bundle" target="_blank">Start</a>
+- React-devtools
 
 ---
 
@@ -146,6 +148,7 @@ Examples
 
 - React is ready for ES6 and has nice syntax shortcuts.
 - React components will eventually be raw class objects.
+- <a href="http://localhost:8080/0-bundle" target="_blank">Start</a>
 
 ---
 
@@ -153,6 +156,7 @@ Examples
 
 - Data flows downward. Actions flow upward.
 - Notice that it starts to get awkward as the depth increases.
+- <a href="http://localhost:8080/0-bundle" target="_blank">Start</a>
 
 ---
 
