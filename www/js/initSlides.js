@@ -14,7 +14,7 @@ var createQrCode = function(text) {
 };
 
 // make qr code
-// document.getElementById('qr').innerHTML = createQrCode(remoteServer + '/remote.html#'+uid);
+document.getElementById('qr').innerHTML = createQrCode(remoteServer + '/remote.html#'+uid);
 
 // connected?
 var connected = false;
@@ -63,8 +63,7 @@ function fixZoomJank(){
 //
 
 // Connect to websocket
-// Disabled for now.
-// connect();
+connect();
 
 function connect() {
   // connect to server

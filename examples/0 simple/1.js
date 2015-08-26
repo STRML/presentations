@@ -1,8 +1,13 @@
-var through = require('through');
+var React = require('react');
 
-var tr = through(function write(data) {
-  var str = data.toString().slice(0, -1); // Remove trailing \n
-  this.queue('> ' + str + ':' + str.length + '\n');
+// Build for browser with webpack
+// > webpack [input] [output]
+// > webpack 1.js 1-bundle.js
+var Hello = React.createClass({
+  render: function() {
+    return React.createElement('div', {style: {color: 'red'}}, 'Hello!');
+  }
 });
 
-process.stdin.pipe(tr).pipe(process.stdout);
+var element = React.createElement(Hello);
+React.render(element, document.getElementById('container'));

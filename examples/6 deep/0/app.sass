@@ -1,0 +1,24 @@
+body, .app {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+.content {
+  display: flex;
+}
+.content, .mainView {
+  flex: 1;
+}
+.mainView {
+  padding: 10px;
+}
+.sidebar {
+  border: 1px solid black;
+  background: #eee;
+  width: 10vw;
+  order: -1;
+}
+.right-sidebar {
+  background: #ddf;
+  order: 999;
+}

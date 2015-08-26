@@ -1,2 +1,0 @@
-{"who":"Dr. Nick","message":"Hi everybody!"}
-{"who":"everyone","message":"Hi Dr. Nick!"}
