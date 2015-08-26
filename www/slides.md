@@ -198,7 +198,3 @@ Examples
 ### Work to make your applications simpler.
 
 Constraints and unidirectional flow create a simpler mental model.
-
----
-
-## The End
