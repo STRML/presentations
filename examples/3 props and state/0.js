@@ -1,5 +1,8 @@
 var React = require('react');
 
+// Export React for devtools
+if (process.browser) window.React = React;
+
 // Let's build a simple series of components with props.
 var Component = React.createClass({
   // React allows static typing of props!

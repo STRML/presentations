@@ -2,6 +2,7 @@ body, .app {
   display: flex;
   min-height: 100vh;
   flex-direction: column;
+  margin: 0;
 }
 .content {
   display: flex;
@@ -14,6 +15,8 @@ body, .app {
 }
 .sidebar {
   border: 1px solid black;
+  border-top-width: 0;
+  border-bottom-width: 0;
   background: #eee;
   width: 10vw;
   order: -1;
@@ -21,4 +24,11 @@ body, .app {
 .right-sidebar {
   background: #ddf;
   order: 999;
+}
+.footer {
+  background: #fdd;
+  border: 1px solid #333;
+  height: 3vh;
+  line-height: 3vh;
+  padding: 0 10px;
 }

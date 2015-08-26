@@ -1,5 +1,8 @@
 var React = require('react');
 
+// Export React for devtools
+if (process.browser) window.React = React;
+
 var Component = React.createClass({
   getInitialState: function() {
     return {

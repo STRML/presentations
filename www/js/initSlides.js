@@ -1,23 +1,23 @@
-/* global qrcode, Reveal, zoom, hljs, SockJS, epixa */
-var remoteServer = window.location.protocol + '//' + window.location.host;
-// generate our random hash
-var uid = "qazwsxedcrfvtgbyhnujmikolp1234567890".split('').sort(function(){return 0.5-Math.random();}).join('');
+// /* global qrcode, Reveal, zoom, hljs, SockJS, epixa */
+// var remoteServer = window.location.protocol + '//' + window.location.host;
+// // generate our random hash
+// var uid = "qazwsxedcrfvtgbyhnujmikolp1234567890".split('').sort(function(){return 0.5-Math.random();}).join('');
 
-// we need this to generate the URL
-var createQrCode = function(text) {
-  var qr = qrcode(5, 'M');
-  console.log(text);
-  qr.addData(text);
-  qr.make();
+// // we need this to generate the URL
+// var createQrCode = function(text) {
+//   var qr = qrcode(5, 'M');
+//   console.log(text);
+//   qr.addData(text);
+//   qr.make();
 
-  return qr.createImgTag(10);
-};
+//   return qr.createImgTag(10);
+// };
 
-// make qr code
-document.getElementById('qr').innerHTML = createQrCode(remoteServer + '/remote.html#'+uid);
+// // make qr code
+// document.getElementById('qr').innerHTML = createQrCode(remoteServer + '/remote.html#'+uid);
 
-// connected?
-var connected = false;
+// // connected?
+// var connected = false;
 
 //
 // Presentation
@@ -62,79 +62,79 @@ function fixZoomJank(){
 // Websockets
 //
 
-// Connect to websocket
-connect();
+// // Connect to websocket
+// connect();
 
-function connect() {
-  // connect to server
-  var url = remoteServer + '/socket';
-  var sock = new SockJS(url);
+// function connect() {
+//   // connect to server
+//   var url = remoteServer + '/socket';
+//   var sock = new SockJS(url);
 
-  // connected and ready
-  sock.onopen = function() {
-    if (!connected) {
-      connected = true;
-      setTimeout(function() {
-        document.querySelector(".socketConnection img").style.opacity = 1;
-      }, 4000);
-    }
-  };
-  // lose connection
-  sock.onclose = function() {
-    // lost the remote
-    console.error('lost connection.');
-    setTimeout(connect, 500);
-  };
+//   // connected and ready
+//   sock.onopen = function() {
+//     if (!connected) {
+//       connected = true;
+//       setTimeout(function() {
+//         document.querySelector(".socketConnection img").style.opacity = 1;
+//       }, 4000);
+//     }
+//   };
+//   // lose connection
+//   sock.onclose = function() {
+//     // lost the remote
+//     console.error('lost connection.');
+//     setTimeout(connect, 500);
+//   };
 
-  // register moves
-  sock.onmessage = function(e) {
-    var data = e.data;
-    console.log('data', data);
-    try {
-      data = JSON.parse(data);
-      switch (data.type) {
-        case 'msg':
-          handleMessage(data.data);
-          break;
-        case 'identify':
-          handleIdentify();
-          break;
-      }
-    } catch(e) {
-      console.error("Unable to parse", data, e);
-    }
+//   // register moves
+//   sock.onmessage = function(e) {
+//     var data = e.data;
+//     console.log('data', data);
+//     try {
+//       data = JSON.parse(data);
+//       switch (data.type) {
+//         case 'msg':
+//           handleMessage(data.data);
+//           break;
+//         case 'identify':
+//           handleIdentify();
+//           break;
+//       }
+//     } catch(e) {
+//       console.error("Unable to parse", data, e);
+//     }
 
-  };
+//   };
 
-  sock.emit = function(type, data) {
-    sock.send(JSON.stringify({type: type, data: data}));
-  };
+//   sock.emit = function(type, data) {
+//     sock.send(JSON.stringify({type: type, data: data}));
+//   };
 
-  var proxyMethods = ['right', 'left', 'up', 'down', 'next', 'prev'];
-  function handleMessage(msg) {
-    if (proxyMethods.indexOf(msg) !== -1){
-      Reveal[msg]();
-    } else if (msg === 'zoom') {
-      resetPan();
-      var el = document.querySelector(".present code");
-      zoom.to({element: el, pan: false});
-    } else if (msg.indexOf('zoom') === 0 && msg.length > 4){
-      var direction = msg.slice(4);
-      panScreen(direction);
-    } else if (msg === "overview") {
-      Reveal.toggleOverview();
-    }
-  }
+//   var proxyMethods = ['right', 'left', 'up', 'down', 'next', 'prev'];
+//   function handleMessage(msg) {
+//     if (proxyMethods.indexOf(msg) !== -1){
+//       Reveal[msg]();
+//     } else if (msg === 'zoom') {
+//       resetPan();
+//       var el = document.querySelector(".present code");
+//       zoom.to({element: el, pan: false});
+//     } else if (msg.indexOf('zoom') === 0 && msg.length > 4){
+//       var direction = msg.slice(4);
+//       panScreen(direction);
+//     } else if (msg === "overview") {
+//       Reveal.toggleOverview();
+//     }
+//   }
 
-  // identify with server
-  function handleIdentify() {
-    Reveal.right();
-    sock.emit('identity', {
-      type: 'viewer',
-      uid: uid
-    });
-  }
-}
+//   // identify with server
+//   function handleIdentify() {
+//     Reveal.right();
+//     sock.emit('identity', {
+//       type: 'viewer',
+//       uid: uid
+//     });
+//   }
+// }
 
 
 
