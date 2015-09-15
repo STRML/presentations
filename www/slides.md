@@ -124,47 +124,7 @@ become more complex with every commit.
 
 ---
 
-### React is not about the DOM
-
-React is an application style. The DOM is one possible target (via `react-dom`).
-
-Other targets:
-
-* iOS
-* Android (just released)
-* Canvas ([react-canvas, Flipboard](https://github.com/Flipboard/react-canvas))
-* D3 ([react-d3](https://github.com/esbullington/react-d3))
-* Three.js ([react-three](https://twitter.com/ToxicFork/status/642803091969048576))
-* Terminal ([react-blessed](https://github.com/Yomguithereal/react-blessed), [demo](https://github.com/gaearon/react-blessed-hot-motion))
-
----
-
-### Three.js, really?
-
-<video name="media" data-height="632" data-width="488" loop="true" autoplay="true" poster="https://pbs.twimg.com/tweet_video_thumb/COuyAT8WUAAv5yw.png" src="/img/threejs.mp4">
-  <source video-src="/img/threejs.mp4" type="video/mp4" class="source-mp4" src="/img/threejs.mp4">
-</video>
-
----
-
-### Terminal, really?
-
-* YEAHHHH!!!
-
-![](/img/hacktime.jpg)
-
----
-
-### React-Native, iOS vs Android
-
-* 85%+ code reuse, but completely native widgets with JS core
-
-<img src="https://scontent-ord1-1.xx.fbcdn.net/hphotos-xpt1/t39.2365-6/11891380_1627845260812265_211379441_n.png" style="display: inline-block; width: 49%;" />
-<img src="https://fbcdn-dragon-a.akamaihd.net/hphotos-ak-xpf1/t39.2365-6/11891342_1121951694500056_1904665184_n.png" style="display: inline-block; width: 49%;" />
-
----
-
-Examples
+## Examples
 
 ---
 
@@ -211,6 +171,54 @@ Examples
 - React is ready for ES6 and has nice syntax shortcuts.
 - React components will eventually be raw class objects.
 - <a href="http://localhost:8080/0-bundle" target="_blank">Start</a>
+
+---
+
+### React Moves Fast
+
+<!-- Thought about waiting until the end, but this is too exciting... -->
+
+---
+
+### React is not about the DOM
+
+React is an application style. The DOM is one possible target (via `react-dom`).
+
+<!-- Talk about react splitting from react-dom -->
+
+Other targets:
+
+* iOS
+* Android (just released)
+* Canvas ([react-canvas, Flipboard](https://github.com/Flipboard/react-canvas))
+* D3 ([react-d3](https://github.com/esbullington/react-d3))
+* Three.js ([react-three](https://twitter.com/ToxicFork/status/642803091969048576))
+* Terminal ([react-blessed](https://github.com/Yomguithereal/react-blessed), [demo](https://github.com/gaearon/react-blessed-hot-motion))
+
+---
+
+### Three.js, really?
+
+<video name="media" data-height="632" data-width="488" loop="true" autoplay="true" poster="https://pbs.twimg.com/tweet_video_thumb/COuyAT8WUAAv5yw.png" src="/img/threejs.mp4">
+  <source video-src="/img/threejs.mp4" type="video/mp4" class="source-mp4" src="/img/threejs.mp4">
+</video>
+
+---
+
+### Terminal, really?
+
+* YEAHHHH!!!
+
+![](/img/hacktime.jpg)
+
+---
+
+### React-Native, iOS vs Android
+
+* 85%+ code reuse, but completely native widgets with JS core
+
+<img src="https://scontent-ord1-1.xx.fbcdn.net/hphotos-xpt1/t39.2365-6/11891380_1627845260812265_211379441_n.png" style="display: inline-block; width: 49%;" />
+<img src="https://fbcdn-dragon-a.akamaihd.net/hphotos-ak-xpf1/t39.2365-6/11891342_1121951694500056_1904665184_n.png" style="display: inline-block; width: 49%;" />
 
 ---
 

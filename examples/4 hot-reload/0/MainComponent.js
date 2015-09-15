@@ -1,5 +1,5 @@
 var React = require('react');
-var Button = require('./button');
+var Button = require('./Button');
 require('./component.sass');
 
 var MainComponent = React.createClass({
@@ -14,7 +14,7 @@ var MainComponent = React.createClass({
   render: function() {
     return (
       <div>
-        <h3>State Updates on Action!!!</h3>
+        <h3>State Updates on Action</h3>
         <p>Clicked: {this.state.clicked}</p>
         <Button onIncrement={this.onIncrement} clicked={this.state.clicked} />
       </div>

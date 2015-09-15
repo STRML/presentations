@@ -3,13 +3,12 @@ var webpack = require('webpack');
 
 module.exports = {
     // Gives us JSX source maps
-    devtool: 'cheap-module-source-map',
+    devtool: 'source-map',
     // Shortcut - read all files from disk to determine what we want to build
     entry: fs.readdirSync(__dirname).reduce(function(memo, fileName) {
         if (/^\d\.js.?$/.test(fileName)) {
             memo[fileName.replace(/\.js.?/, '')] = [
-                'webpack-dev-server/client?http://0.0.0.0:8080', // WebpackDevServer host and port
-                'webpack/hot/dev-server',
+                'webpack-hot-middleware/client?path=/__webpack_hmr&overlay=true&reload=true', // WebpackDevServer host and port
                 './' + fileName
             ];
         }
@@ -19,7 +18,7 @@ module.exports = {
         loaders: [
             {
                 test: /\.jsx?$/,
-                loaders: ['react-hot', 'babel'],
+                loader: 'babel-loader',
                 exclude: /node_modules/
             },
             {
@@ -29,10 +28,13 @@ module.exports = {
         ]
     },
     plugins: [
-      new webpack.HotModuleReplacementPlugin(),
-      new webpack.NoErrorsPlugin()
+        new webpack.optimize.OccurenceOrderPlugin(),
+        new webpack.HotModuleReplacementPlugin(),
+        new webpack.NoErrorsPlugin()
     ],
     output: {
-        filename: '[name]-bundle.js'
+        path: '/',
+        filename: '[name]-bundle.js',
+        publicPath: '/'
     }
 };
