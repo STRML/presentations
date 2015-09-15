@@ -1,7 +1,5 @@
 var React = require('react');
 var data = require('json!./data.json');
-// Export React for devtools
-if (process.browser) window.React = React;
 
 var Table = React.createClass({
   render: function() {

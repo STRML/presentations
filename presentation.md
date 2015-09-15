@@ -5,6 +5,13 @@ AKA
 # Reducing WebApp Complexity
 # Making WebApps Predictable
 
+### React
+
+> ...Remember the days before React, when you had to write one piece of code to render your application and
+> another to update it? HAHAHAHA. That was awful. React showed us that expressing our views declaratively
+> leads to clearer, more predictable, and less error-prone applications.
+
+[Source](https://github.com/acdlite/flummox/blob/v3.5.1/docs/docs/guides/why-flux-component-is-better-than-flux-mixin.md)
 
 ### The Goal
 
