@@ -17,7 +17,7 @@ app.use(express.static('./www'));
 server.listen(port);
 websockets.installHandlers(server, {prefix: '/socket'});
 
-console.log("Server listening on port", port);
+console.log("Server listening at http://localhost:" + port);
 
 // connection
 websockets.on('connection', function(socket) {

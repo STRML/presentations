@@ -4,16 +4,9 @@ var webpack = require('webpack');
 module.exports = {
     // Gives us JSX source maps
     devtool: 'source-map',
-    // Shortcut - read all files from disk to determine what we want to build
-    entry: fs.readdirSync(__dirname).reduce(function(memo, fileName) {
-        if (/^\d\.js.?$/.test(fileName)) {
-            memo[fileName.replace(/\.js.?/, '')] = [
-                'webpack-hot-middleware/client?path=/__webpack_hmr&overlay=true&reload=true', // WebpackDevServer host and port
-                './' + fileName
-            ];
-        }
-        return memo;
-    }, {}),
+    entry: {
+        'app': './bootstrap/browser.js'
+    },
     module: {
         loaders: [
             {
@@ -21,17 +14,17 @@ module.exports = {
                 loader: 'babel-loader',
                 exclude: /node_modules/,
                 query: {
-                    cacheDirectory: '',
-                    'plugins': [
+                    cacheDirectory: true,
+                    plugins: [
                       'react-transform',
                       'react-require'
                     ],
-                    'extra': {
+                    extra: {
                       'react-transform': [
                         {
-                          'target': 'react-transform-webpack-hmr',
-                          'imports': ['react'],
-                          'locals': ['module']
+                          target: 'react-transform-webpack-hmr',
+                          imports: ['react'],
+                          locals: ['module']
                         },
                       ]
                     }

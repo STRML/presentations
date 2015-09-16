@@ -16,6 +16,8 @@ class MainComponent extends Component {
     return (
       <div>
         <h3>ES6 Syntax at {this.props.conference}</h3>
+        <div><a href="/ES7">View in ES7</a></div>
+        <div><a href="/rick_astley">Another Route</a></div>
         <p>Clicked: {state.clicked}</p>
         {/* Notice binding on onIncrement! ES6 classes don't autobind. */}
         {/* You could also use this.onIncrement.bind(this) */}

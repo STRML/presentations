@@ -14,6 +14,27 @@
 
 ---
 
+### Who's this clown?
+
+![](/img/sam.jpg)
+<!-- As you can tell, I don't need any more contract work -->
+
+* Frontend developer for 10 years
+* CTO and Co-Founder of BitMEX, the Bitcoin Mercantile Exchange
+* Maintainer of ~10 React libraries
+
+---
+
+### Isomorphic / Universal JS
+
+* NodeJS brought us JS on the server
+* Browserify brought us shared libraries between client and server
+* React brings us an entire shared application
+
+---
+
+<!-- Let's talk a little more about why we want to do this in the first place. -->
+
 ### The Problem
 
 Traditional webapps have complex state on a platform that was never designed for applications.
@@ -56,35 +77,6 @@ Traditional webapps have complex state on a platform that was never designed for
 
 ---
 
-### How Desync Starts
-
-```javascript
-// This is visual only - expect bugs
-onClick: function(e) {
-  this.$('.active').removeClass('active');
-  $(e.currentTarget).addClass('active');
-  // What if we add another control specifying
-  // which item is active?
-},
-```
-
----
-
-### Solutions?
-
-* Rerender entire view on change:
-  - Way too slow / doesn't scale
-  - Easy mental model - similar to static pages
-<p />
-* Two-way Data Binding:
-  - Debugging is difficult
-  - Slow dirty checking / digest loop
-  - Dynamic scoping problems
-  - App becomes a giant string parser
-  - Tight coupling between views and application logic
-
----
-
 ### Data changing over time is the root of all evil.
 
 To change the DOM, you need to erase or read what was there
@@ -111,7 +103,7 @@ Best of all worlds:
 Best of all worlds:
 
 - Intermediate state (in the DOM, not in your data) is impossible.
-- Rendering is a pure function. Can be run on the server or for non-DOM targets
+- Rendering is a pure function. Can be run on the server and for non-DOM targets
   - Prerender views for speed or SEO
   - Run similar code on mobile with React Mobile
 
@@ -166,11 +158,18 @@ become more complex with every commit.
 
 ---
 
-## 5. ES6
+## 5a. ES6
 
 - React is ready for ES6 and has nice syntax shortcuts.
 - React components will eventually be raw class objects.
 - <a href="http://localhost:8080/0-bundle" target="_blank">Start</a>
+
+---
+
+## 5b. Universal App with Routing
+
+- This app actually runs server-side.
+- Even routing is possible at the server.
 
 ---
 
@@ -180,7 +179,7 @@ become more complex with every commit.
 
 ---
 
-### React is not about the DOM
+### React is not just about the DOM
 
 React is an application style. The DOM is one possible target (via `react-dom`).
 
@@ -222,13 +221,7 @@ Other targets:
 
 ---
 
-## 6. Deep Applications
-
-- Data flows downward. Actions flow upward.
-- Notice that it starts to get awkward as the depth increases.
-- <a href="http://localhost:8080/0-bundle" target="_blank">Start</a>
-
----
+<!-- If we have time... otherwise skip to end/questions -->
 
 ### Traditional MVC
 
@@ -242,30 +235,15 @@ Other targets:
 
 ---
 
-## 7. Flux / Redux
+## 6. Flux / Redux
 
 (`counter` example)
 
 - All state of all components lives in a single JSON object.
 - Views can trigger actions that create a new root state.
-- <a href="http://localhost:3000" target="_blank">Start</a>
-
----
-
-## 8. Redux DevTools
-
 - Just like React components, Redux actions are pure functions.
 - Pure functions can be reversed and re-applied at will.
 - <a href="http://localhost:3000" target="_blank">Start</a>
-
----
-
-## 9. Server rendering and bootstrap
-
-- The server prerenders the entire application and serves it to the client.
-- React resumes where the server left off without modifying the DOM.
-- Fetch data from some external API, render the app and serve the data.
-- `npm start; npm run client;` <a href="http://localhost:8080/?counter=42" target="_blank">Start</a>
 
 ---
 

@@ -1,10 +1,11 @@
 var _ = require('lodash');
 var config = require('./webpack.config');
+var ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 module.exports =  _.extend({}, config, {
   target: 'node',
   entry: {
-    'app': './src/MainComponent-ES7.js'
+    'app': './bootstrap/server-prerender.js'
   },
   module: {
       loaders: [
@@ -13,17 +14,22 @@ module.exports =  _.extend({}, config, {
               loader: 'babel-loader',
               exclude: /node_modules/,
               query: {
-                "plugins": [
+                cacheDirectory: true,
+                plugins: [
                   "react-require"
                 ]
               }
           },
           {
               test: /\.sass$/,
-              loader: 'null-loader'
+              // Use ExtractTextPlugin to put sass in a file
+              loader: ExtractTextPlugin.extract("style-loader", "css-loader", "sass-loader")
           }
       ]
   },
+  plugins: [
+    new ExtractTextPlugin("styles.css")
+  ],
   output: {
     filename: '[name]-server-bundle.js',
     path: './build',
