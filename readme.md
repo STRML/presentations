@@ -1,5 +1,7 @@
 # React-Presentation
 
+Presentation shown at FITC Web Unleashed on Sep 16, 2015.
+
 Presentation structure forked from [slide](https://github.com/wridgers/slide)
 
 To run,
@@ -11,11 +13,11 @@ npm install
 
 # 7, 8, and 9 require individual installs as they are submodules.
 $DIR = $(pwd)
-cd $DIR/examples/7\ redux && npm install
-cd $DIR/examples/8\ redux\ devtools && npm install
-cd $DIR/examples/9\ universal && npm install
+cd $DIR/examples/4\ redux && npm install
 
 # Run the presentation
 npm start
 open localhost:8008
+
+# Read the READMEs in each example directory to get run instructions.
 ```
