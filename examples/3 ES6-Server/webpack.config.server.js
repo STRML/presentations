@@ -35,6 +35,6 @@ module.exports =  _.extend({}, config, {
     path: './build',
     libraryTarget: 'commonjs2'
   },
-  externals: {'react': 'react'},
+  externals: ['react', 'lodash', 'react-dom', 'react-dom/server', 'react-router-component'],
   devtool: null
 });

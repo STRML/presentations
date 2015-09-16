@@ -6,6 +6,7 @@ class FourOhFour extends Component {
     return (
       <div>
         <h3>Sorry! Page not found.</h3>
+        <img src={require('file!../img/hackerman.jpg')} />
       </div>
     );
   }

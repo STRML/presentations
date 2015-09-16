@@ -3,6 +3,9 @@ var Button = require('./Button');
 require('./component.sass');
 
 var MainComponent = React.createClass({
+  propTypes: {
+    aStr: React.PropTypes.string
+  },
   getInitialState: function() {
     return {
       clicked: 0

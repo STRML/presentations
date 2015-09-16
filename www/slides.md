@@ -18,6 +18,7 @@
 <!-- As you can tell, I don't need any more contract work -->
 
 * Samuel Reed - [STRML.net](http://strml.net)
+* In Milwaukee, WI, previously Hong Kong & Washington DC
 * Frontend developer for 10 years
 * CTO and Co-Founder of [BitMEX](https://www.bitmex.com), the Bitcoin Mercantile Exchange
 * Maintainer of ~10 React libraries
@@ -26,11 +27,11 @@
 
 ### Isomorphic / Universal JS
 
-* NodeJS brought us JS on the server.
-* Browserify brought us shared libraries between client and server.
-  - Code transformers switch server libraries with browser libraries with identical APIs.
-* Webpack helps bring browser modules to the server.
-* React brings us an entire shared application.
+* NodeJS brought us JS on the server
+* Browserify brought us shared libraries between client and server
+  - Code transformers switch server libraries with browser libraries with identical APIs
+* Webpack helps bring browser modules to the server
+* React brings us an entire shared application
 
 ---
 
@@ -89,13 +90,13 @@ You have to think about every possible transition between states.
 
 ---
 
-### React
+### Why React
 
-Best of all worlds:
+Simple, declarative syntax:
 
 - Declare what you want your views to look like, as functions, on every frame.
   (Similar to graphics programming)
-- Virtually rerender the entire app on every frame.
+- Virtually rerender the entire app on every frame!
 - Updates use an efficient tree-diffing function to determine needed DOM mutations.
   - Entire tree branches can be skipped efficiently.
   - The simplicity of static rendering, even better speed than two-way binding
@@ -104,7 +105,7 @@ Best of all worlds:
 
 ### React
 
-Best of all worlds:
+Keeps state sane:
 
 - Intermediate state (in the DOM, not in your data) is impossible.
 - Rendering is a pure function. Can be run on the server and for non-DOM targets
@@ -198,7 +199,8 @@ Best of all worlds:
 
 - React is ready for ES6 and has nice syntax shortcuts.
 - React components can be raw class objects.
-- <a href="http://localhost:8083/" target="_blank">Start</a>
+
+<!-- Wait to explain universal aspect, just show ES6 -->
 
 ---
 
@@ -206,6 +208,7 @@ Best of all worlds:
 
 - This app actually runs server-side.
 - Even routing is possible at the server.
+- Note the separate entry points for server prerender and client.
 
 ---
 
@@ -252,6 +255,18 @@ Other targets:
 <img src="https://scontent-ord1-1.xx.fbcdn.net/hphotos-xpt1/t39.2365-6/11891380_1627845260812265_211379441_n.png" style="display: inline-block; width: 49%;" />
 <img src="https://fbcdn-dragon-a.akamaihd.net/hphotos-ak-xpf1/t39.2365-6/11891342_1121951694500056_1904665184_n.png" style="display: inline-block; width: 49%;" />
 
+```javascript
+var MovieScreen = React.createClass({
+  render: function() {
+    return (
+      <ScrollView contentContainerStyle={styles.contentContainer}>
+        <View style={styles.mainSection}>
+          <Image
+            source={getImageSource(this.props.movie, 'det')}
+            style={styles.detailsImage} />
+          <View style={styles.rightPane}>
+```
+
 ---
 
 ### Three.js, really?
@@ -285,7 +300,7 @@ Other targets:
 
 ---
 
-## 6. Flux / Redux
+## 4. Flux / Redux
 
 (`counter` example)
 
@@ -297,6 +312,7 @@ Other targets:
 
 ---
 
-### Work to make your applications simpler.
+### Questions?
 
-Constraints and unidirectional flow create a simpler mental model.
+* @STRML_
+* github.com/STRML

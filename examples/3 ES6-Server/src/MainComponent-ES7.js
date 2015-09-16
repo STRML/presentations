@@ -16,10 +16,10 @@ class MainComponent extends Component {
     this.setState({clicked: ++this.state.clicked});
   }
   render() {
-    let {state} = this;
+    let {props, state} = this;
     return (
       <div>
-        <h3>ES7 Syntax at {this.props.conference}</h3>
+        <h3>ES7 Syntax at {props.conference}</h3>
         <p>Clicked: {state.clicked}</p>
         {/* Notice binding on onIncrement! ES6 classes don't autobind. */}
         {/* You could also use this.onIncrement.bind(this) */}
