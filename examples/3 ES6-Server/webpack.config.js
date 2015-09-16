@@ -16,6 +16,7 @@ module.exports = {
                 query: {
                     cacheDirectory: true,
                     plugins: [
+                      'react-class-display-name',
                       'react-transform',
                       'react-require'
                     ],
