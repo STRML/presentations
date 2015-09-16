@@ -1,4 +1,5 @@
 var React = require('react');
+var ReactDOMServer = require('react-dom/server');
 
 var Hello = React.createClass({
   render: function() {
@@ -8,5 +9,5 @@ var Hello = React.createClass({
 
 var element = React.createElement(Hello);
 // Renders to a string *without* a DOM
-var output = React.renderToString(element);
+var output = ReactDOMServer.renderToString(element);
 console.log(output);

@@ -17,17 +17,20 @@
 ![](/img/sam.jpg)
 <!-- As you can tell, I don't need any more contract work -->
 
+* Samuel Reed - [STRML.net](http://strml.net)
 * Frontend developer for 10 years
-* CTO and Co-Founder of BitMEX, the Bitcoin Mercantile Exchange
+* CTO and Co-Founder of [BitMEX](https://www.bitmex.com), the Bitcoin Mercantile Exchange
 * Maintainer of ~10 React libraries
 
 ---
 
 ### Isomorphic / Universal JS
 
-* NodeJS brought us JS on the server
-* Browserify brought us shared libraries between client and server
-* React brings us an entire shared application
+* NodeJS brought us JS on the server.
+* Browserify brought us shared libraries between client and server.
+  - Code transformers switch server libraries with browser libraries with identical APIs.
+* Webpack helps bring browser modules to the server.
+* React brings us an entire shared application.
 
 ---
 
@@ -92,6 +95,7 @@ Best of all worlds:
 
 - Declare what you want your views to look like, as functions, on every frame.
   (Similar to graphics programming)
+- Virtually rerender the entire app on every frame.
 - Updates use an efficient tree-diffing function to determine needed DOM mutations.
   - Entire tree branches can be skipped efficiently.
   - The simplicity of static rendering, even better speed than two-way binding
@@ -113,13 +117,7 @@ Best of all worlds:
 <!-- The DOM is slow. If JS is a fusion reactor, the DOM is Joe Theismann on a Rascal Scooter -->
 ![](/img/fusion-reactor.jpg)
 
----
-
-### Constraints help build good applications.
-
-Without setting rules for yourself and your developers, applications will
-become more complex with every commit.
-
+<!-- Virtual DOM is plain JS objects, synchronized with the browser DOM at every tick. This makes the virtual -> browser DOM synchronization an interface, and the browser DOM can be swapped out. -->
 ---
 
 ## Examples
@@ -136,7 +134,6 @@ become more complex with every commit.
 
 - You can nest components inside each other.
 - Teams can share common components (like `<Table>` or `<Button>`) across projects.
-- <a href="http://localhost:8081/0-bundle" target="_blank">Start</a>
 
 ---
 
@@ -145,7 +142,12 @@ become more complex with every commit.
 ![](/img/what-is-webpack.jpg)
 
 - `require()` anything
+  - `require('./styles.sass')`
+  - `var data = require('./data.json')`
+  - `var tpl = require('./index.jade')`
+  - `<img src={require('/img/kung_fury.png')} />`
 - Target browsers and servers
+  - Targets: `web`, `webworker`, `node`, `async-node`, `node-webkit`, `electron`
 
 ---
 

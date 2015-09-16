@@ -1,7 +1,6 @@
 module.exports = {
     entry: {
-        '0': './0.js',
-        '1': './1.js'
+        '0': './0.js'
     },
     module: {
         loaders: [
