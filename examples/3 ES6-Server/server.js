@@ -18,7 +18,7 @@ app.use(require("webpack-hot-middleware")(compiler));
 
 app.use(express.static(__dirname + '/build'));
 
-app.get('/:route', function(req, res) {
+app.get('/:route?', function(req, res) {
   var initialData = {
     conference: 'Web Unleashed'
   };
@@ -38,6 +38,6 @@ app.get('/:route', function(req, res) {
   `);
 });
 
-var port = process.env.PORT || 3000;
+var port = 8083;
 console.log(`app listening at http://localhost:${port}`);
 app.listen(port);

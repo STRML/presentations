@@ -1,0 +1,2 @@
+- Run `0.js` with node
+- `open 1.html`. To rebuild, `webpack 1.js 1-bundle.js`.

@@ -24,5 +24,6 @@ app.get('/', function(req, res) {
   `);
 });
 
-console.log('app listening on 3000');
-app.listen(3000);
+var port = 8082;
+console.log('app listening at http://localhost:' + port);
+app.listen(port);

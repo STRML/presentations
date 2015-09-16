@@ -6,7 +6,7 @@ class List extends Component {
     times: PropTypes.number.isRequired
   }
   render() {
-    let items = _.times(this.props.times, (idx) => <li>{idx}</li>);
+    let items = _.times(this.props.times, (idx) => <li key={idx}>{idx}</li>);
     return (
       <ul>{items}</ul>
     );

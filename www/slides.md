@@ -1,6 +1,4 @@
 # Universal Web Applications with React & NodeJS
-<hr />
-## Building Predictable Client/Server Apps
 
 ---
 
@@ -51,13 +49,15 @@ Traditional webapps have complex state on a platform that was never designed for
 
 ## Typical issues
 
-* **Out-of-date data**: It's easy to forget to change the data on a view in all places it is referenced.
+<br />
 
-* **Local State**: Views contain complex local state. Views can get into broken state.
+* **Out-of-date data** <!-- It's easy to forget to change the data on a view in all places it is referenced. -->
 
-* **Cascading Updates**: Changing a model or collection causes another model or collection to change, cascading into complexity.
+* **Complex Local State** <!-- Views contain complex local state. Views can get into broken state. -->
 
-* **Difficult testing**: Testing components requires rebuilding the app in a browser environment like PhantomJS.
+* **Cascading Updates** <!-- Changing a model or collection causes another model or collection to change, cascading into complexity. -->
+
+* **Difficult testing** <!-- Testing components requires rebuilding the app in a browser environment like PhantomJS. -->
 
 ---
 
@@ -109,6 +109,12 @@ Best of all worlds:
 
 ---
 
+### Virtual DOM
+<!-- The DOM is slow. If JS is a fusion reactor, the DOM is Joe Theismann on a Rascal Scooter -->
+![](/img/fusion-reactor.jpg)
+
+---
+
 ### Constraints help build good applications.
 
 Without setting rules for yourself and your developers, applications will
@@ -130,46 +136,86 @@ become more complex with every commit.
 
 - You can nest components inside each other.
 - Teams can share common components (like `<Table>` or `<Button>`) across projects.
+- <a href="http://localhost:8081/0-bundle" target="_blank">Start</a>
 
 ---
 
-## 2. JSX
+## What is Webpack?
 
-- Shorthand that looks like traditional HTML.
-- Nesting components works as you'd expect.
-- Create lists in loops.
+![](/img/what-is-webpack.jpg)
 
----
-
-## 3. Props and State
-
-- Data flows downward from the root component to sub-components.
-- Define only the data you need.
-- State is useful for use it sparingly.
+- `require()` anything
+- Target browsers and servers
 
 ---
 
-## 4. Hot reloading & DevTools
+## Webpack is Extensible
+
+![](/img/webpack-options.jpg)
+
+---
+
+## Webpack Hot Module Replacement (HMR)
+
+- Like livereload, but works on JS too.
+- Idempotent functions can be replaced in the running VM.
+- Plugins available for styles, React components, action and store implementions, even request handlers.
+
+
+---
+
+## 2. Hot reloading & DevTools
 
 - React components are pure functions, so they can be replaced at will without a refresh.
-- Use Webpack
-- <a href="http://localhost:8080/0-bundle" target="_blank">Start</a>
-- React-devtools
+- Uses Webpack HMR
+- <a href="http://localhost:8082/0-bundle" target="_blank">Start</a>
+- Can use React-DevTools
+![](/img/react-devtools.jpg)
+> Facebook
 
 ---
 
-## 5a. ES6
+## Use Webpack with Babel
+
+- Babel offers ES6+ syntax on older runtimes
+  * Has support for ES7 features:
+    * `async/await`
+    * Static class properties
+    * Comprehensions
+- Babel plugins offer unique syntax transforms:
+  * React optimizations (constants, inline objects)
+  * Typechecking
+  * Remove console/debugger
+  * Inline arguments slice (slicing arguments causes deopt)
+  * Dead code elimination
+  * Lots more coming...
+
+---
+
+## 3a. ES6
 
 - React is ready for ES6 and has nice syntax shortcuts.
-- React components will eventually be raw class objects.
-- <a href="http://localhost:8080/0-bundle" target="_blank">Start</a>
+- React components can be raw class objects.
+- <a href="http://localhost:8083/" target="_blank">Start</a>
 
 ---
 
-## 5b. Universal App with Routing
+## 3b. Universal App with Routing
 
 - This app actually runs server-side.
 - Even routing is possible at the server.
+
+---
+
+## How Does This Work?
+
+- Server grabs all needed data to create the app.
+- Server runs app with data and route and renders to string.
+- Server sends rendered page to client.
+- Client's browser renders page immediately and starts to load JS.
+- JS loads initial data payload and rebuilds app.
+- When finished, checksums virtual DOM. If checksums match, do nothing.
+![](/img/checksum.jpg)
 
 ---
 
@@ -181,18 +227,28 @@ become more complex with every commit.
 
 ### React is not just about the DOM
 
-React is an application style. The DOM is one possible target (via `react-dom`).
+React is a general application platform. The DOM is one possible target (via `react-dom`).
 
 <!-- Talk about react splitting from react-dom -->
 
 Other targets:
 
 * iOS
-* Android (just released)
+* Android (just released Sep. 15)
 * Canvas ([react-canvas, Flipboard](https://github.com/Flipboard/react-canvas))
 * D3 ([react-d3](https://github.com/esbullington/react-d3))
 * Three.js ([react-three](https://twitter.com/ToxicFork/status/642803091969048576))
-* Terminal ([react-blessed](https://github.com/Yomguithereal/react-blessed), [demo](https://github.com/gaearon/react-blessed-hot-motion))
+* Terminal ([react-blessed](https://github.com/Yomguithereal/react-blessed))
+* Let's take a look...
+
+---
+
+### React-Native, iOS vs Android
+
+* 85%+ code reuse, but completely native widgets with JS core
+
+<img src="https://scontent-ord1-1.xx.fbcdn.net/hphotos-xpt1/t39.2365-6/11891380_1627845260812265_211379441_n.png" style="display: inline-block; width: 49%;" />
+<img src="https://fbcdn-dragon-a.akamaihd.net/hphotos-ak-xpf1/t39.2365-6/11891342_1121951694500056_1904665184_n.png" style="display: inline-block; width: 49%;" />
 
 ---
 
@@ -212,14 +268,6 @@ Other targets:
 
 ---
 
-### React-Native, iOS vs Android
-
-* 85%+ code reuse, but completely native widgets with JS core
-
-<img src="https://scontent-ord1-1.xx.fbcdn.net/hphotos-xpt1/t39.2365-6/11891380_1627845260812265_211379441_n.png" style="display: inline-block; width: 49%;" />
-<img src="https://fbcdn-dragon-a.akamaihd.net/hphotos-ak-xpf1/t39.2365-6/11891342_1121951694500056_1904665184_n.png" style="display: inline-block; width: 49%;" />
-
----
 
 <!-- If we have time... otherwise skip to end/questions -->
 

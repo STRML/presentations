@@ -8,10 +8,6 @@ var Component = React.createClass({
         <p>
           It's not really HTML though, it's JS objects.
         </p>
-        <p className="second">
-          There are only minor attribute differences between JSX and HTML. <code>className</code> is
-          the only one you really need to worry about.
-        </p>
         <SubComponent />
       </div>
     );
