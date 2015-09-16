@@ -6,7 +6,10 @@ module.exports = {
     devtool: 'source-map',
     // Shortcut - read all files from disk to determine what we want to build
     entry: {
-        '0': './0.js'
+        '0': [
+            'webpack-hot-middleware/client?path=/__webpack_hmr&overlay=true&reload=true', // WebpackDevServer host and port
+            './0.js'
+        ]
     },
     module: {
         loaders: [
@@ -15,7 +18,7 @@ module.exports = {
                 loader: 'babel-loader',
                 exclude: /node_modules/,
                 query: {
-                    cacheDirectory: '',
+                    cacheDirectory: true,
                     plugins: [
                       'react-display-name',
                       'react-transform',

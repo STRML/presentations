@@ -5,7 +5,10 @@ module.exports = {
     // Gives us JSX source maps
     devtool: 'source-map',
     entry: {
-        'app': './bootstrap/browser.js'
+        'app': [
+            'webpack-hot-middleware/client?path=/__webpack_hmr&overlay=true&reload=true', // WebpackDevServer host and port
+            './bootstrap/browser.js'
+        ]
     },
     module: {
         loaders: [
