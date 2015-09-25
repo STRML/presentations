@@ -5,7 +5,7 @@
 
     <title>Universal WebApps with ReactJS and NodeJS</title>
 
-    <link rel="stylesheet" href="css/reveal.min.css">
+    <link rel="stylesheet" href="css/reveal.css">
     <link rel="stylesheet" href="css/theme/night.css" id="theme">
     <style>
       .reveal pre {
@@ -17,6 +17,9 @@
         max-height: 600px;
       }
       .reveal img {
+        max-height: 400px;
+      }
+      .reveal img.large {
         max-height: 600px;
       }
       hr {
@@ -26,8 +29,17 @@
       }
     </style>
 
+    <!-- Printing and PDF exports -->
+    <script>
+      var link = document.createElement( 'link' );
+      link.rel = 'stylesheet';
+      link.type = 'text/css';
+      link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+      document.getElementsByTagName( 'head' )[0].appendChild( link );
+    </script>
+
     <!-- For syntax highlighting -->
-    <link rel="stylesheet" href="css/zenburn.css">
+    <link rel="stylesheet" href="css/zenburn-hljs.css">
   </head>
 
   <body>
@@ -43,7 +55,7 @@
           <img src="img/jackie.jpg" style="opacity: 0" />
         </section>
  -->
-        <section data-markdown="slides.md" data-separator="^---" data-vertical="^-vert-"></section>
+        <section data-markdown="slides.md" data-separator="^---" data-separator-vertical="^-vert-" data-separator-notes="^Note:"></section>
       </div>
     </div>
 

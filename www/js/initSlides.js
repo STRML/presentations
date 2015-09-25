@@ -32,6 +32,7 @@ Reveal.initialize({
   center: true,
   width: 1280,
   height: 800,
+  transition: 'convex',
   // Optional libraries used to extend on reveal.js
   dependencies: [
     { src: 'js/classList.js', condition: function() { return !document.body.classList; } },

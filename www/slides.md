@@ -14,7 +14,7 @@
 
 ### Who's this clown?
 
-![](/img/sam.jpg)
+![](img/sam.jpg)
 <!-- As you can tell, I don't need any more contract work -->
 
 * Samuel Reed - [STRML.net](http://strml.net)
@@ -64,10 +64,9 @@ Traditional webapps have complex state on a platform that was never designed for
 * **Difficult testing** <!-- Testing components requires rebuilding the app in a browser environment like PhantomJS. -->
 
 ---
-
 ### OH GOD WHY
 
-![oh god why](img/healthcare.gov.jpg)
+![oh god why](img/healthcare.gov.jpg) <!-- .element: class="large" -->
 
 <!-- Problems with HC.gov: spaghetti jquery code, imperative style, different validations on client-server -->
 
@@ -116,7 +115,7 @@ Keeps state sane:
 
 ### Virtual DOM
 <!-- The DOM is slow. If JS is a fusion reactor, the DOM is Joe Theismann on a Rascal Scooter -->
-![](/img/fusion-reactor.jpg)
+![](img/fusion-reactor.jpg)
 
 <!-- Virtual DOM is plain JS objects, synchronized with the browser DOM at every tick. This makes the virtual -> browser DOM synchronization an interface, and the browser DOM can be swapped out. -->
 ---
@@ -140,13 +139,12 @@ Keeps state sane:
 
 ## What is Webpack?
 
-![](/img/what-is-webpack.jpg)
+![](img/what-is-webpack.jpg)
 
 - `require()` anything
   - `require('./styles.sass')`
   - `var data = require('./data.json')`
   - `var tpl = require('./index.jade')`
-  - `<img src={require('/img/kung_fury.png')} />`
 - Target browsers and servers
   - Targets: `web`, `webworker`, `node`, `async-node`, `node-webkit`, `electron`
 
@@ -154,7 +152,7 @@ Keeps state sane:
 
 ## Webpack is Extensible
 
-![](/img/webpack-options.jpg)
+![](img/webpack-options.jpg) <!-- .element: class="large" -->
 
 ---
 
@@ -173,8 +171,7 @@ Keeps state sane:
 - Uses Webpack HMR
 - <a href="http://localhost:8082/0-bundle" target="_blank">Start</a>
 - Can use React-DevTools
-![](/img/react-devtools.jpg)
-> Facebook
+![](img/react-devtools.jpg)
 
 ---
 
@@ -220,7 +217,7 @@ Keeps state sane:
 - Client's browser renders page immediately and starts to load JS.
 - JS loads initial data payload and rebuilds app.
 - When finished, checksums virtual DOM. If checksums match, do nothing.
-![](/img/checksum.jpg)
+![](img/checksum.jpg)
 
 ---
 
@@ -271,8 +268,8 @@ var MovieScreen = React.createClass({
 
 ### Three.js, really?
 
-<video name="media" data-height="632" data-width="488" loop="true" autoplay="true" poster="https://pbs.twimg.com/tweet_video_thumb/COuyAT8WUAAv5yw.png" src="/img/threejs.mp4">
-  <source video-src="/img/threejs.mp4" type="video/mp4" class="source-mp4" src="/img/threejs.mp4">
+<video name="media" data-height="632" data-width="488" loop="true" autoplay="true" poster="https://pbs.twimg.com/tweet_video_thumb/COuyAT8WUAAv5yw.png" src="img/threejs.mp4">
+  <source video-src="img/threejs.mp4" type="video/mp4" class="source-mp4" src="img/threejs.mp4">
 </video>
 
 ---
@@ -281,7 +278,7 @@ var MovieScreen = React.createClass({
 
 * YEAHHHH!!!
 
-![](/img/hacktime.jpg)
+![](img/hacktime.jpg)
 
 ---
 
@@ -290,13 +287,13 @@ var MovieScreen = React.createClass({
 
 ### Traditional MVC
 
-<img src="/img/mvc.png" style="width: 90%" />
+<img src="img/mvc.png" style="width: 90%" />
 
 ---
 
 ### Flux / Redux
 
-<img src="/img/flux.png" style="width: 90%" />
+<img src="img/flux.png" style="width: 90%" />
 
 ---
 
