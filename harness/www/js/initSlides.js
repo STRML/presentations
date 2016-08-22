@@ -30,8 +30,6 @@ Reveal.initialize({
   progress: true,
   history: true,
   center: true,
-  width: 1280,
-  height: 800,
   transition: 'convex',
   // Optional libraries used to extend on reveal.js
   dependencies: [
@@ -44,20 +42,20 @@ Reveal.initialize({
   ]
 });
 
-// Wait for global `zoom` to be present, then fix webkit jank
-var zoomInterval = setInterval(function() {
-  if (window.zoom) {
-    clearInterval(zoomInterval);
-    fixZoomJank();
-  }
-}, 50);
+// // Wait for global `zoom` to be present, then fix webkit jank
+// var zoomInterval = setInterval(function() {
+//   if (window.zoom) {
+//     clearInterval(zoomInterval);
+//     fixZoomJank();
+//   }
+// }, 50);
 
-function fixZoomJank(){
-  Reveal.toggleOverview();
-  zoom.to({element: document.querySelector('.present')});
-  zoom.out();
-  Reveal.toggleOverview();
-}
+// function fixZoomJank(){
+//   Reveal.toggleOverview();
+//   zoom.to({element: document.querySelector('.present')});
+//   zoom.out();
+//   Reveal.toggleOverview();
+// }
 
 //
 // Websockets
@@ -144,48 +142,48 @@ function fixZoomJank(){
 // Zoom Panning
 //
 
-var currentPan;
-var reveal = document.querySelector('.reveal');
-resetPan();
+// var currentPan;
+// var reveal = document.querySelector('.reveal');
+// resetPan();
 
-function panScreen(direction) {
-  var scrollAmount = 50; // magicnum
-  if (direction === "up") {
-    currentPan.top += scrollAmount;
-  }
-  // Down
-  else if( direction === "down") {
-    currentPan.top -= scrollAmount;
-  }
+// function panScreen(direction) {
+//   var scrollAmount = 50; // magicnum
+//   if (direction === "up") {
+//     currentPan.top += scrollAmount;
+//   }
+//   // Down
+//   else if( direction === "down") {
+//     currentPan.top -= scrollAmount;
+//   }
 
-  // Left
-  if(direction === "left") {
-    currentPan.left += scrollAmount;
-  }
-  // Right
-  else if(direction === "right") {
-    currentPan.left -= scrollAmount;
-  }
-  doPan();
-}
+//   // Left
+//   if(direction === "left") {
+//     currentPan.left += scrollAmount;
+//   }
+//   // Right
+//   else if(direction === "right") {
+//     currentPan.left -= scrollAmount;
+//   }
+//   doPan();
+// }
 
-function resetPan() {
-  var transition = "all 0.5s ease";
-  reveal.style.transition = transition;
-  reveal.style.OTransition = transition;
-  reveal.style.msTransition = transition;
-  reveal.style.MozTransition = transition;
-  reveal.style.WebkitTransition = transition;
+// function resetPan() {
+//   var transition = "all 0.5s ease";
+//   reveal.style.transition = transition;
+//   reveal.style.OTransition = transition;
+//   reveal.style.msTransition = transition;
+//   reveal.style.MozTransition = transition;
+//   reveal.style.WebkitTransition = transition;
 
-  currentPan = {top: 0, left: 0};
-  doPan();
-}
+//   currentPan = {top: 0, left: 0};
+//   doPan();
+// }
 
-function doPan() {
-  var transform = "translate(" + currentPan.left + "px, " + currentPan.top + "px)";
-  reveal.style.transform = transform;
-  reveal.style.OTransform = transform;
-  reveal.style.msTransform = transform;
-  reveal.style.MozTransform = transform;
-  reveal.style.WebkitTransform = transform;
-}
+// function doPan() {
+//   var transform = "translate(" + currentPan.left + "px, " + currentPan.top + "px)";
+//   reveal.style.transform = transform;
+//   reveal.style.OTransform = transform;
+//   reveal.style.msTransform = transform;
+//   reveal.style.MozTransform = transform;
+//   reveal.style.WebkitTransform = transform;
+// }
