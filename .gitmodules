@@ -1,12 +1,6 @@
-[submodule "examples/7 redux"]
-	path = examples/7 redux
-	url = git@github.com:rackt/redux.git
-[submodule "examples/8 redux devtools"]
-	path = examples/8 redux devtools
+[submodule "2015-react-fitc/submodules/redux-devtools"]
+	path = 2015-react-fitc/submodules/redux-devtools
 	url = git@github.com:gaearon/redux-devtools.git
-[submodule "submodules/redux-devtools"]
-	path = submodules/redux-devtools
-	url = git@github.com:gaearon/redux-devtools.git
-[submodule "submodules/redux"]
-	path = submodules/redux
-	url = git@github.com:rackt/redux.git
+[submodule "2015-react-fitc/submodules/redux"]
+	path = 2015-react-fitc/submodules/redux
+	url = git@github.com:reactjs/redux.git
