@@ -23,6 +23,7 @@
 // Presentation
 //
 
+
 // create presentation
 Reveal.initialize({
   controls: true,
@@ -30,16 +31,39 @@ Reveal.initialize({
   progress: true,
   history: true,
   center: true,
+  // Flags if we should show a help overlay when the questionmark
+  // key is pressed
+  help: true,
+  // Number of slides away from the current that are visible
+  viewDistance: 1,
+
   transition: 'convex',
   // Optional libraries used to extend on reveal.js
   dependencies: [
     { src: 'js/classList.js', condition: function() { return !document.body.classList; } },
+    { src: 'js/please.js' },
     { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
     { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
     { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
     { src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
     { src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
   ]
+});
+
+// Reveal.addEventListener('ready', function() {
+//   Array.from(document.querySelectorAll('.slide-background')).forEach(function(slide) {
+//     slide.style['background'] = Please.make_color({value: 0.5});
+//   });
+// });
+
+Reveal.addEventListener('slidechanged', function(event) {
+  document.querySelectorAll('.slide-background')[event.indexh].style['background'] = Please.make_color({value: 0.4});
+});
+
+document.addEventListener('keypress', function(e) {
+  if (e.key === 'c') {
+    document.querySelector('.slide-background.present').style['background'] = Please.make_color({value: 0.4});
+  }
 });
 
 // // Wait for global `zoom` to be present, then fix webkit jank
