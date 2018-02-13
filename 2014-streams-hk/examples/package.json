@@ -12,7 +12,7 @@
   "dependencies": {
     "lodash": "^2.4.1",
     "event-stream": "^3.1.5",
-    "ecstatic": "^0.5.3",
+    "ecstatic": "^2.0.0",
     "JSONStream": "^0.8.2",
     "shoe": "0.0.15",
     "unzip": "^0.1.9",
